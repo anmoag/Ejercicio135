@@ -31,7 +31,7 @@ public class UsuarioController {
             return "index";
         } else {
             // En caso de error mando un mensaje
-            modelo.addAttribute("error", "Usuario y/o contraseña inválidos");
+            modelo.addAttribute("error", true);
             return "login";
         }
     }
