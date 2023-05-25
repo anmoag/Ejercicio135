@@ -48,24 +48,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/centrales/todas">Listado de Centrales</a>
+
+                <li class="nav-item mx-5">
+                    <span class="nav-link">Usuario</span>
+                    <span th:text="${session.nuevoUsuario.correo + '✅'}" class="nav-link"></span>
+
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/incidencias/todas">Listado de Incidencias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/v1/centrales" target="_blank">Ver Centrales (Json)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/v1/incidencias" target="_blank">Ver Incidencias (Json)</a>
+                <li class="nav-item mx-5">
+                    <span class="nav-link">Id de la sesión</span>
+                    <span th:text="${session.idSesion}"  class="nav-link">Sesión</span>
                 </li>
                 <li class="nav-item float-end">
-                    <span th:text="${session.nuevoUsuario.correo + '✅'}" class="nav-link">Usuario</span>
-                    <span th:text="${session.idSesion}" class="nav-link">Sesión</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/usuarios/logout">Cerrar Sesión</a>
+                    <a class="nav-link" href="/usuarios/logout"><i class="bi bi-x-circle text-danger"></i> Cerrar Sesión</a>
                 </li>
 
             </ul>

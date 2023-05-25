@@ -1,6 +1,7 @@
 package com.inserta.ejercicio135.services;
 
 import com.inserta.ejercicio135.models.Central;
+import com.inserta.ejercicio135.models.Tipo;
 import com.inserta.ejercicio135.repos.CentralRepo;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -23,8 +24,8 @@ public class CentralServiceImpl implements CentralService{
         return centralRepo.findByActiva(activa);
     }
 
-    public List<Central> mostrarCentralesPorTipo(int tipo) {
-        return centralRepo.findByIdTipo(tipo);
+    public List<Central> mostrarCentralesPorTipo(Tipo tipo) {
+        return centralRepo.findByTipo(tipo);
     }
 
     public List<Central> mostrarCentralesAntesDelAnio(LocalDateTime fecha) {

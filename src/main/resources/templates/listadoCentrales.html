@@ -65,7 +65,7 @@
                     <a class="nav-link" href="/">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/centrales">Centrales</a>
+                    <a class="nav-link" href="/centrales/todas">Centrales</a>
                 </li>
             </ul>
         </div>
@@ -83,7 +83,7 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${central.descripcion}"></h5>
                     <p class="card-text">
-                        Provincia: <span th:text="${central.id_provincia}"></span><br/>
+                        Provincia: <span th:text="${central.provincia.nombre}"></span><br/>
                         Potencia: <span th:text="${central.potencia}"></span><br>
                         Estado: <span th:text="${central.activa ? 'activa': 'apagada'}"></span>
                     </p>

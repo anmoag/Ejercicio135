@@ -1,5 +1,6 @@
 package com.inserta.ejercicio135.controllers;
 
+import com.inserta.ejercicio135.models.Tipo;
 import com.inserta.ejercicio135.services.CentralService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +38,7 @@ public class CentralesController {
     }
 
     @GetMapping("/tipo/{tipo}")
-    public String getCentralesByTipo(@PathVariable Integer tipo, Model model) {
+    public String getCentralesByTipo(@PathVariable Tipo tipo, Model model) {
         model.addAttribute("listado", centralService.mostrarCentralesPorTipo(tipo));
         return "listadoCentrales";
     }

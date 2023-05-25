@@ -15,8 +15,12 @@ import java.time.LocalDateTime;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
-        private int idUsuario;
-        private int idCentral;
+        @ManyToOne
+        @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+        private Usuario usuario;
+        @ManyToOne
+        @JoinColumn(name = "id_central", referencedColumnName = "id")
+        private Central central;
         private String texto;
         private LocalDateTime fecha;
         private boolean resuelta;

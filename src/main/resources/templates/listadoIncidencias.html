@@ -43,7 +43,7 @@
                     <a class="nav-link" href="/">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/centrales">Centrales</a>
+                    <a class="nav-link" href="/centrales/todas">Centrales</a>
                 </li>
             </ul>
         </div>
@@ -58,7 +58,7 @@
             <thead>
             <tr>
                 <th>Descripción</th>
-                <th>IdCentral</th>
+                <th>Central</th>
                 <th>Fecha</th>
                 <th>Estado</th>
             </tr>
@@ -66,7 +66,7 @@
             <tbody>
             <tr th:each="incidencia : ${incidencias}">
                 <td th:text="${incidencia.texto}"></td>
-                <td th:text="${incidencia.idCentral}"></td>
+                <td th:text="${incidencia.central.descripcion}"></td>
                 <td th:text="${incidencia.fecha}"></td>
                 <td th:text="${incidencia.resuelta ? 'resuelta' : 'no resuelta aún'}"></td>
             </tr>
