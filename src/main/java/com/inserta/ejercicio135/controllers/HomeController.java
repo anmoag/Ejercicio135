@@ -1,16 +1,17 @@
 package com.inserta.ejercicio135.controllers;
 
-import jakarta.servlet.http.HttpSession;
+import com.inserta.ejercicio135.models.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String home(HttpSession session){
-        if (session.getAttribute("usuario") != null) {
-            return "redirect:/index";
+    public String home(@SessionAttribute(required = false) Usuario nuevoUsuario){
+        if (nuevoUsuario == null) {
+            return "login";
         }
-        return "login";
+        return "index";
     }
 }

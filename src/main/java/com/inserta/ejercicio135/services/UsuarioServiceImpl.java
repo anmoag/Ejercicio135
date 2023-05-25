@@ -14,7 +14,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario validarUsuario(String correo, String clave) {
+    public Usuario encontrarUsuario(String correo, String clave) {
         return usuarioRepo.findByCorreoAndClave(correo, clave);
     }
 }

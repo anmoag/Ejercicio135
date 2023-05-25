@@ -17,17 +17,17 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping("/login")
+    @PostMapping("usuarios/login")
     public String procesarLogin(
             String correo,
             String clave,
             HttpSession session,
             Model modelo) {
-        // Realizo la validación de inicio de sesión aquí
-        if (usuarioService.validarUsuario(correo, clave) != null) {
-            // Creo un objeto Usuario y lo guardo en la sesión y redirijo al index
-            Usuario nuevoUsuario = new Usuario();
-            session.setAttribute("nuevoUsuario", nuevoUsuario);
+
+        Usuario usuarioEncontrado = usuarioService.encontrarUsuario(correo, clave);
+        if ( usuarioEncontrado != null) {
+            session.setAttribute("nuevoUsuario", usuarioEncontrado);
+            session.setAttribute("idSesion", session.getId());
             return "index";
         } else {
             // En caso de error mando un mensaje
@@ -35,13 +35,12 @@ public class UsuarioController {
             return "login";
         }
     }
-    @GetMapping("/logout")
+    @GetMapping("usuarios/logout")
     public String logout(HttpSession session) {
         // Elimino el atributo usuarioNuevo de la sesión
         //session.removeAttribute("nuevoUsuario");
         //Cierro toda la sesión y todos los atributos que pudiera haber
         session.invalidate();
-
-        return "/login";
+        return "redirect:/";
     }
 }
