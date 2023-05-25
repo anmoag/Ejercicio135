@@ -3,7 +3,7 @@
   Fecha   : 19/05/2023 - 12:55
 -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Ejercicio 135</title>
@@ -59,6 +59,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/api/v1/incidencias" target="_blank">Ver Incidencias (Json)</a>
+                </li><li class="nav-item">
+                    <a class="nav-link" href="/logout">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -66,7 +68,7 @@
 </nav>
 
 <div class="container mt-5">
-
+    <h2 th:if="${session.usuario}" th:text="${session.usuario.correo}" class="mb-3"></h2>
     <h2 class="mb-3">Consultas a las Vistas</h2>
     <a href="/centrales/todas" class="btn btn-primary btn-custom shadow">Listado de Centrales</a><br>
     <a href="/centrales/activas" class="btn btn-primary btn-custom shadow">Listado de Centrales activas</a><br>
