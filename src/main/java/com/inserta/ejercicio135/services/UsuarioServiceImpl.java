@@ -1,6 +1,7 @@
 package com.inserta.ejercicio135.services;
 
 
+import com.inserta.ejercicio135.models.Usuario;
 import com.inserta.ejercicio135.repos.UsuarioRepo;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public boolean validarUsuario(String correo, String clave) {
-        return usuarioRepo.existsByCorreoAndClave(correo, clave);
+    public Usuario validarUsuario(String correo, String clave) {
+        return usuarioRepo.findByCorreoAndClave(correo, clave);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class UsuarioController {
@@ -19,25 +19,29 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public String procesarLogin(
-            @RequestParam String correo,
-            @RequestParam String clave,
+            String correo,
+            String clave,
             HttpSession session,
             Model modelo) {
-        // Realiza la validación de inicio de sesión aquí
-        if (usuarioService.validarUsuario(correo, clave)) {
-            // Crea un objeto Usuario y guárdalo en la sesión
-            Usuario nuevousuario = new Usuario();
-            session.setAttribute("usuario", nuevousuario);
+        // Realizo la validación de inicio de sesión aquí
+        if (usuarioService.validarUsuario(correo, clave) != null) {
+            // Creo un objeto Usuario y lo guardo en la sesión y redirijo al index
+            Usuario nuevoUsuario = new Usuario();
+            session.setAttribute("nuevoUsuario", nuevoUsuario);
             return "index";
         } else {
+            // En caso de error mando un mensaje
             modelo.addAttribute("error", "Usuario y/o contraseña inválidos");
             return "login";
         }
     }
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        // Elimina el objeto Usuario de la sesión y redirige al inicio de sesión
-        session.removeAttribute("usuario");
+        // Elimino el atributo usuarioNuevo de la sesión
+        //session.removeAttribute("nuevoUsuario");
+        //Cierro toda la sesión y todos los atributos que pudiera haber
+        session.invalidate();
+
         return "/login";
     }
 }
